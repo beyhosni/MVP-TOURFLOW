@@ -4,6 +4,8 @@ import com.tourflow.model.Tour;
 import com.tourflow.model.User;
 import com.tourflow.repository.TourRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cache.annotation.CacheEvict;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -17,11 +19,13 @@ public class TourService {
     @Autowired
     private TourRepository tourRepository;
 
+    @CacheEvict(value = {"activeTours", "guideTours"}, allEntries = true)
     public Tour createTour(Tour tour, User guide) {
         tour.setGuide(guide);
         return tourRepository.save(tour);
     }
 
+    @CacheEvict(value = {"tours", "activeTours", "guideTours"}, allEntries = true)
     public Tour updateTour(UUID tourId, Tour tourDetails, User guide) {
         Tour tour = getTourByIdAndGuide(tourId, guide);
 
@@ -37,12 +41,14 @@ public class TourService {
         return tourRepository.save(tour);
     }
 
+    @CacheEvict(value = {"tours", "activeTours", "guideTours"}, allEntries = true)
     public void deleteTour(UUID tourId, User guide) {
         Tour tour = getTourByIdAndGuide(tourId, guide);
         tour.setActive(false);
         tourRepository.save(tour);
     }
 
+    @Cacheable(value = "tours", key = "#tourId")
     public Tour getTourById(UUID tourId) {
         return tourRepository.findById(tourId)
                 .orElseThrow(() -> new RuntimeException("Tour non trouvé avec l'ID : " + tourId));
@@ -58,10 +64,12 @@ public class TourService {
         return tour;
     }
 
+    @Cacheable(value = "activeTours")
     public List<Tour> getAllActiveTours() {
         return tourRepository.findByActiveTrue();
     }
 
+    @Cacheable(value = "guideTours", key = "#guide.id")
     public List<Tour> getToursByGuide(User guide) {
         return tourRepository.findByGuideAndActiveTrue(guide);
     }
