@@ -1,0 +1,41 @@
+# Étape 1: Build de l'application avec Maven
+FROM maven:3.8.6-openjdk-17 AS build
+
+WORKDIR /app
+
+# Copier le fichier pom.xml
+COPY pom.xml .
+
+# Télécharger les dépendances
+RUN mvn dependency:go-offline -B
+
+# Copier le code source
+COPY src ./src
+
+# Builder l'application
+RUN mvn clean package -DskipTests -B
+
+# Étape 2: Création de l'image de production
+FROM openjdk:17-jdk-slim
+
+# Installation des utilitaires nécessaires
+RUN apt-get update && apt-get install -y     curl     && rm -rf /var/lib/apt/lists/*
+
+WORKDIR /app
+
+# Copier le JAR de l'étape de build
+COPY --from=build /app/target/*.jar app.jar
+
+# Créer un utilisateur non-root pour des raisons de sécurité
+RUN groupadd -r appuser && useradd -r -g appuser appuser
+RUN chown -R appuser:appuser /app
+USER appuser
+
+# Exposer le port 8080
+EXPOSE 8080
+
+# Configuration du health check
+HEALTHCHECK --interval=30s --timeout=10s --start-period=60s --retries=3     CMD curl -f http://localhost:8080/actuator/health || exit 1
+
+# Lancer l'application avec des options JVM optimisées pour la production
+CMD ["java", "-XX:+UseG1GC", "-XX:+UseContainerSupport", "-XX:MaxRAMPercentage=75.0", "-jar", "app.jar"]
