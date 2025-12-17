@@ -1,0 +1,72 @@
+# Dépendances
+node_modules/
+/.pnp
+.pnp.js
+
+# Tests
+/coverage
+
+# Production
+/build
+
+# Variables d'environnement
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+# Logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Éditeurs
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# Système d'exploitation
+.DS_Store
+Thumbs.db
+
+# Docker
+docker-compose.override.yml
+
+# Base de données
+*.db
+*.sqlite
+
+# Logs
+logs
+*.log
+
+# Fichiers temporaires
+tmp/
+temp/
+
+# Backend Java/Maven
+backend/target/
+backend/.mvn/wrapper/maven-wrapper.jar
+backend/.mvn/wrapper/maven-wrapper.properties
+backend/.mvn/wrapper/dists
+backend/.mvn/wrapper/download
+backend/mvnw
+backend/mvnw.cmd
+backend/*.class
+backend/*.log
+
+# IDE
+backend/.idea/
+backend/*.iml
+backend/.vscode/
+backend/settings.xml
+backend/.project
+backend/.classpath
+backend.factorypath
+
+# Fichiers de configuration avec secrets
+backend/src/main/resources/application-prod.properties
+backend/src/main/resources/application-staging.properties
+backend/src/main/resources/application-local.properties

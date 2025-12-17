@@ -1,0 +1,169 @@
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+}
+
+/* Styles pour les cartes de tour */
+.tour-card {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.tour-card-content {
+  flex-grow: 1;
+}
+
+.tour-card-actions {
+  margin-top: auto;
+}
+
+/* Styles pour le calendrier */
+.calendar-container {
+  height: 600px;
+  width: 100%;
+}
+
+/* Styles pour le formulaire de réservation */
+.booking-form {
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+/* Styles pour le tableau de bord */
+.dashboard-stats {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+  margin-bottom: 24px;
+}
+
+.stat-card {
+  flex: 1;
+  min-width: 200px;
+}
+
+/* Styles pour les pages */
+.page-container {
+  padding: 24px;
+}
+
+.page-title {
+  margin-bottom: 24px;
+}
+
+/* Styles pour les formulaires */
+.form-container {
+  max-width: 500px;
+  margin: 0 auto;
+}
+
+/* Styles pour les boutons */
+.button-group {
+  display: flex;
+  gap: 8px;
+  margin-top: 16px;
+}
+
+/* Styles pour les alertes */
+.alert-container {
+  margin-bottom: 16px;
+}
+
+/* Styles pour les listes */
+.list-container {
+  margin-top: 16px;
+}
+
+/* Styles pour les modales */
+.modal-content {
+  padding: 24px;
+}
+
+/* Styles pour les images */
+.tour-image {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+}
+
+/* Styles pour les chargements */
+.loading-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 200px;
+}
+
+/* Styles pour les erreurs */
+.error-container {
+  color: #d32f2f;
+  margin: 16px 0;
+}
+
+/* Styles pour les succès */
+.success-container {
+  color: #2e7d32;
+  margin: 16px 0;
+}
+
+/* Styles pour les en-têtes */
+.header-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 24px;
+}
+
+/* Styles pour les filtres */
+.filters-container {
+  display: flex;
+  gap: 16px;
+  margin-bottom: 24px;
+  flex-wrap: wrap;
+}
+
+/* Styles pour les détails de réservation */
+.booking-details {
+  margin-top: 16px;
+}
+
+.booking-detail-item {
+  margin-bottom: 8px;
+}
+
+/* Styles pour le profil */
+.profile-container {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.profile-section {
+  margin-bottom: 32px;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .dashboard-stats {
+    flex-direction: column;
+  }
+
+  .filters-container {
+    flex-direction: column;
+  }
+
+  .header-container {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 16px;
+  }
+}
