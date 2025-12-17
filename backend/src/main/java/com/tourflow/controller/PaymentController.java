@@ -1,5 +1,6 @@
 package com.tourflow.controller;
 
+import com.tourflow.dto.CheckoutSessionRequest;
 import com.tourflow.model.Payment;
 import com.tourflow.service.PaymentService;
 import io.swagger.v3.oas.annotations.Operation;
@@ -97,35 +98,5 @@ public class PaymentController {
         }
     }
 
-    // DTO pour la requête de création de session de paiement
-    public static class CheckoutSessionRequest {
-        private UUID bookingId;
-        private String successUrl;
-        private String cancelUrl;
 
-        // Getters et Setters
-        public UUID getBookingId() {
-            return bookingId;
-        }
-
-        public void setBookingId(UUID bookingId) {
-            this.bookingId = bookingId;
-        }
-
-        public String getSuccessUrl() {
-            return successUrl;
-        }
-
-        public void setSuccessUrl(String successUrl) {
-            this.successUrl = successUrl;
-        }
-
-        public String getCancelUrl() {
-            return cancelUrl;
-        }
-
-        public void setCancelUrl(String cancelUrl) {
-            this.cancelUrl = cancelUrl;
-        }
-    }
 }

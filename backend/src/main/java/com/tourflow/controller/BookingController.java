@@ -1,5 +1,6 @@
 package com.tourflow.controller;
 
+import com.tourflow.dto.BookingRequest;
 import com.tourflow.model.Booking;
 import com.tourflow.model.User;
 import com.tourflow.service.AuthenticationService;
@@ -175,64 +176,5 @@ public class BookingController {
             return authorizationHeader.substring(7);
         }
         return null;
-    }
-
-    // DTO pour la requête de création de réservation
-    public static class BookingRequest {
-        private UUID tourId;
-        private LocalDateTime startDate;
-        private int participants;
-        private String customerName;
-        private String customerEmail;
-        private String customerPhone;
-
-        // Getters et Setters
-        public UUID getTourId() {
-            return tourId;
-        }
-
-        public void setTourId(UUID tourId) {
-            this.tourId = tourId;
-        }
-
-        public LocalDateTime getStartDate() {
-            return startDate;
-        }
-
-        public void setStartDate(LocalDateTime startDate) {
-            this.startDate = startDate;
-        }
-
-        public int getParticipants() {
-            return participants;
-        }
-
-        public void setParticipants(int participants) {
-            this.participants = participants;
-        }
-
-        public String getCustomerName() {
-            return customerName;
-        }
-
-        public void setCustomerName(String customerName) {
-            this.customerName = customerName;
-        }
-
-        public String getCustomerEmail() {
-            return customerEmail;
-        }
-
-        public void setCustomerEmail(String customerEmail) {
-            this.customerEmail = customerEmail;
-        }
-
-        public String getCustomerPhone() {
-            return customerPhone;
-        }
-
-        public void setCustomerPhone(String customerPhone) {
-            this.customerPhone = customerPhone;
-        }
     }
 }

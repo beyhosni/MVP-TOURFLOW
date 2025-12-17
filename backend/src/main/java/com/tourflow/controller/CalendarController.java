@@ -1,5 +1,6 @@
 package com.tourflow.controller;
 
+import com.tourflow.dto.ExternalCalendarRequest;
 import com.tourflow.model.ExternalCalendar;
 import com.tourflow.model.User;
 import com.tourflow.service.AuthenticationService;
@@ -173,28 +174,5 @@ public class CalendarController {
             return authorizationHeader.substring(7);
         }
         return null;
-    }
-
-    // DTO pour la requête de calendrier externe
-    public static class ExternalCalendarRequest {
-        private String name;
-        private String icsUrl;
-
-        // Getters et Setters
-        public String getName() {
-            return name;
-        }
-
-        public void setName(String name) {
-            this.name = name;
-        }
-
-        public String getIcsUrl() {
-            return icsUrl;
-        }
-
-        public void setIcsUrl(String icsUrl) {
-            this.icsUrl = icsUrl;
-        }
     }
 }
