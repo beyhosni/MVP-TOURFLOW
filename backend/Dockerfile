@@ -1,5 +1,5 @@
 # Étape 1: Build de l'application avec Maven
-FROM maven:3.8.6-openjdk-17 AS build
+FROM maven:3.8-openjdk-17 AS build
 
 WORKDIR /app
 
@@ -16,7 +16,7 @@ COPY src ./src
 RUN mvn clean package -DskipTests
 
 # Étape 2: Création de l'image de production
-FROM openjdk:17-jdk-slim
+FROM eclipse-temurin:17-jre-alpine
 
 WORKDIR /app
 
